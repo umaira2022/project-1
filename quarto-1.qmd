@@ -14,8 +14,10 @@ library(palmerpenguins)
 
 
 ```{r}
+library(ggplot2)
+
 # Create a beautiful scatter plot
-ggplot(data = penguins, 
+ggplot(data = penguins,
        aes(x = flipper_length_mm, 
            y = body_mass_g, 
            color = species,
