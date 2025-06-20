@@ -2,5 +2,41 @@
 title: "Quarto 1"
 author: "umaira"
 format: html
+execute: 
+  echo: false
 ---
 
+
+```{r}
+suppressPackageStartupMessages(library(tidyverse))
+library(palmerpenguins)
+```
+
+
+```{r}
+# Create a beautiful scatter plot
+ggplot(data = penguins, 
+       aes(x = flipper_length_mm, 
+           y = body_mass_g, 
+           color = species,
+           shape = species)) +
+  geom_point(size = 3, alpha = 0.8, na.rm = TRUE) +
+  scale_color_brewer(palette = "Dark2") +
+  labs(
+    title = "Penguin Body Mass vs Flipper Length",
+    subtitle = "Grouped by Species",
+    x = "Flipper Length (mm)",
+    y = "Body Mass (g)",
+    color = "Species",
+    shape = "Species",
+    caption = "Data from the palmerpenguins package"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 18),
+    plot.subtitle = element_text(size = 14),
+    legend.position = "right",
+    panel.grid.major = element_line(color = "gray90"),
+    panel.grid.minor = element_blank()
+  )
+```
